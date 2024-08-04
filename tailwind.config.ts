@@ -12,6 +12,9 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        hero: 'url("/assets/hero.webp")',
+        "gradient-overlay":
+        "linear-gradient(to bottom, rgba(244, 114, 182, 0.5), rgba(0, 0, 0, 0.8))",
       },
     },
   },
