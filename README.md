@@ -1,3 +1,7 @@
+# Nextjs Server Action List
+
+<img src="Screenshot.png" alt="Nextjs-Server-Action-List" /><br>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
