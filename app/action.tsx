@@ -1,5 +1,7 @@
 "use server";
 
+import AnimeCard, { AnimeProp } from "@/components/AnimeCard";
+
 const MAX_LIMIT = 8;
 const BASE_URL = "https://shikimori.one/api/animes";
 
@@ -15,7 +17,9 @@ export async function fetchAnime(page: number) {
 
     const data = await response.json();
 
-    return data;
+    return data.map((anime: AnimeProp, index: number) => (
+      <AnimeCard key={anime.id} anime={anime} index={index} />
+    ));
   } catch (error: any) {
     throw new Error(`Error fetching anime: ${error.message}`);
   }

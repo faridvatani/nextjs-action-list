@@ -1,46 +1,46 @@
 "use client";
 
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import useIntersectionObserver from "@/hook/useIntersectionObserver";
-
-import { fetchAnime } from "../app/action";
-import AnimeCard, { AnimeProp } from "./AnimeCard";
+import { fetchAnime } from "@/app/action";
+import Image from "next/image";
 
 let page = 2;
+
+export type AnimeCard = React.JSX.Element;
 
 function LoadMore() {
   const [ref, inView] = useIntersectionObserver({ threshold: 0.1 });
 
-  const [data, setData] = useState<AnimeProp[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState<AnimeCard[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const loadMoreData = useCallback(() => {
+    setIsLoading(true);
+    const delay = 700;
+
+    const timeoutId = setTimeout(() => {
+      fetchAnime(page).then((res) => {
+        setData((prevData) => [...prevData, ...res]);
+        page++;
+        setIsLoading(false);
+      });
+    }, delay);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   useEffect(() => {
     if (inView) {
-      setIsLoading(true);
-      // Add a delay of 700 milliseconds
-      const delay = 700;
-
-      const timeoutId = setTimeout(() => {
-        fetchAnime(page).then((res) => {
-          setData([...data, ...res]);
-          page++;
-        });
-
-        setIsLoading(false);
-      }, delay);
-
-      // Clear the timeout if the component is unmounted or inView becomes false
-      return () => clearTimeout(timeoutId);
+      const cleanup = loadMoreData();
+      return cleanup;
     }
-  }, [inView, data, isLoading]);
+  }, [inView, loadMoreData]);
 
   return (
     <>
       <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-        {data.map((item: AnimeProp, index: number) => (
-          <AnimeCard key={item.id} anime={item} index={index} />
-        ))}
+        {data}
       </section>
       <section className="flex justify-center items-center w-full">
         <div ref={ref as React.RefObject<HTMLDivElement>}>
