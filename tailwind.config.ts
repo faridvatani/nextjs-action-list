@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         hero: 'url("/assets/hero.webp")',
         "gradient-overlay":
-        "linear-gradient(to bottom, rgba(244, 114, 182, 0.5), rgba(0, 0, 0, 0.8))",
+          "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(15, 17, 23, 1))",
       },
     },
   },

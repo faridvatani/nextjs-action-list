@@ -18,7 +18,7 @@ function Footer() {
             alt="logo"
             width={19}
             height={19}
-            className="object-contain cursor-pointer"
+            className="object-contain cursor-pointer w-auto h-auto"
           />
         </div>
         <div className="hover:bg-rose-500 p-2 rounded-full">
@@ -27,7 +27,7 @@ function Footer() {
             alt="logo"
             width={19}
             height={19}
-            className="object-contain cursor-pointer"
+            className="object-contain cursor-pointer w-auto h-auto"
           />
         </div>
 
@@ -37,7 +37,7 @@ function Footer() {
             alt="logo"
             width={19}
             height={19}
-            className="object-contain cursor-pointer"
+            className="object-contain cursor-pointer w-auto h-auto"
           />
         </div>
       </div>

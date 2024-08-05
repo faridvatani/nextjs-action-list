@@ -11,9 +11,9 @@ export default function Hero() {
           alt="logo"
           width={101}
           height={96}
-          className="object-contain"
+          className="object-contain w-24 h-auto"
         />
-        <h1 className="sm:text-6xl text-5xl text-white lg:max-w-6xl font-bold leading-[120%]">
+        <h1 className="sm:text-6xl text-5xl text-white lg:max-w-6xl font-bold lg:leading-[120%]">
           Dive into the{" "}
           <span className="text-rose-500">Captivating Universe</span> of Anime
           Magic
@@ -24,7 +24,9 @@ export default function Hero() {
           src="/assets/anime.webp"
           alt="anime"
           fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-contain"
+          priority
         />
       </div>
     </header>
